@@ -1,6 +1,7 @@
 import './App.css';
 import { Button } from 'reactstrap';
 import GeoLocationData from './components/GeoLocationData/GeoLocation';
+import Nasa from './components/Nasa/Nasa';
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
 
       <Button color="primary">Confirm reactstrap install!</Button>
       <GeoLocationData />
+      <Nasa />
     </div>
   );
 }
