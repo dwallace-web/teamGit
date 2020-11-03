@@ -1,13 +1,7 @@
 import './App.css';
-<<<<<<< HEAD
-import { Button } from 'reactstrap';
-import GeoLocationData from './components/GeoLocationData/GeoLocation';
-import Nasa from './components/Nasa/Nasa';
-=======
 import React, { useState, useRef, useEffect } from 'react';
 import Zomato from './components/Zomato/Zomato';
->>>>>>> ee38267be22ff3b5680aee08f2da416e9a8fbbb0
-
+import Nasa from './components/Nasa/Nasa'
 const App = () => {
 
   const [locationReq, setLocationReq] = useState(false);
@@ -54,17 +48,15 @@ const App = () => {
         {/* Add Weather API */}
 
         {/* Add Nasa API */}
+        
 
         <h1> Zomato Data </h1>
         <Zomato location={location} />
       </div>
 
-<<<<<<< HEAD
-      <Button color="primary">Confirm reactstrap install!</Button>
-      <GeoLocationData />
-      <Nasa />
-=======
->>>>>>> ee38267be22ff3b5680aee08f2da416e9a8fbbb0
+      {/* <Button color="primary">Confirm reactstrap install!</Button> */}
+     
+      <Nasa location= {location}/>
     </div>
   );
 }

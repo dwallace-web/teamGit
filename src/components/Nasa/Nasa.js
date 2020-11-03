@@ -1,76 +1,48 @@
-// import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
+// let apiKey = 'UyUy0iy0DlwgItTchMTyfjQL9FuxrbLWl7uDkbG4'
 
+const Nasa = (props) => {
 
-// const SatImage = () => {
-//     const [date, setDate] = useState('');
-//     const [longitude, setLongitude] = useState('');
-//     const [latitude, setLatitude] = useState('');
-//     const [query, setQuery] = useState('');
-//     const [results, setResults] = useState({}); 
+    const [NasaData, setNasaData] = useState([]);
 
+    console.log('data in Nasa', props.location);
     
-//     const fetcher = () => {
-//           fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${date}&api_key=8B4OgnuuFZO6spPPSOnE6r8PtEf964ctngkZubO1`) 
-//            .then(res => res.json())
-//            .then(json => {
-//             console.log(json)
-//             setResults(json);
-//            })
-//          }
+    // useEffect(
+    //     () => {
+    //         fetchNasa()
+    //     }, []
+    // )
 
-//     return(
-//         <div className="main">
-//             <div className="mainDiv">
-//                 <input value={query} onChange={e => setQuery(e.target.value)} placeholder="enter your location here"/>
-//                 <button onClick={() => fetcher()}>Click for location.</button>
-//                 {results ? <div>{results.imagery}</div> : <div></div>}
-//             </div>
-//         </div>
-//     )
-// }
+    let myHeaders = new Headers();
+    myHeaders.append("user-key", "UyUy0iy0DlwgItTchMTyfjQL9FuxrbLWl7uDkbG4");
 
-// export default SatImage;
+    let requestNasaData = {
+        method: 'GET',
+        headers: myHeaders,
+        
+    }
 
+    const fetchNasa = () => {
+         fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${props.location.longitude}&lat=${props.location.latitude}&date=2020-11-03&api_key=UyUy0iy0DlwgItTchMTyfjQL9FuxrbLWl7uDkbG4`, requestNasaData) 
+            
+        .then( r => r.json())
+        .then( res => console.log(res.imagery))
+        .catch(error => console.log('error', error))
+    }
 
-
-
-// const Nasa = (props) => {
-
-//     const [NasaData, setNasaData] = useState({})
+    if (props.location !== undefined) {
+        fetchNasa();
+    } else {
+        // console.log('geolocation is not available!')
+    }
     
-//     useEffect(
-//         () => {
-//             fetchNasa()
-//         }, []
-//     )
 
-//     const fetchNasa = () => {
-//         fetch(`https://api.nasa.gov/planetary/earth/imagery/assets?lon=${longitude}&lat=${latitude}&date=today&api_key=8B4OgnuuFZO6spPPSOnE6r8PtEf964ctngkZubO1`, {
-//             method: 'GET',
-//         }).then( r => r.json())
-//         .then( rArr => console.log(rArr))
-//     }
-
-//     return (
-//         <div>
-//             <div>Location</div>
-//           <button onClick={() => fetchNasa()}>Click for location.</button>
-//         </div>
-//     )
-// }
-import React from 'react';
-
-class Nasa extends React.Component {
-  componentDidMount() {
-    const apiUrl = 'https://api.nasa.gov/planetary/earth/imagery?lon=${props.location.longitude}&lat=${props.location.latitude}&date=today&api_key=knU5BSl3W8gifezdjFE8w6ooqenWfsRXBKBRnHjt';
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => console.log('This is your data', data));
-  }
-  render() {
-    return <h1>my Component has Mounted, Check the browser 'console' </h1>;
-  }
+    return (
+        <div>
+        
+        </div>
+    )
 }
 
 
