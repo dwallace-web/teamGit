@@ -7,7 +7,7 @@ const App = () => {
   console.log('render')
 
   const [location, setLocation] = useState('');
-  const [dataIsReturned , setdataIsReturned ] = useState(false);
+  const [GeoIsReturned , setGeoIsReturned ] = useState(false);
 
   useEffect(() => {
     async function geolocate() {
@@ -21,7 +21,7 @@ const App = () => {
       let { latitude, longitude } = position.coords;
       setLocation({ latitude, longitude })
       console.log('onGeolocateSuccess', latitude, longitude)
-      setdataIsReturned  (true)
+      setGeoIsReturned(true)
     }
 
     const onGeolocateError = (error) => {
@@ -49,7 +49,7 @@ const App = () => {
         {/* Add Nasa API */}
 
         <h1> Zomato Data </h1>
-        { dataIsReturned ? <Zomato location={location} /> : <h1>Slow Down</h1>  }
+        { GeoIsReturned ? <Zomato location={location} /> : <h1>Slow Down</h1>  }
 
       </div>
 
