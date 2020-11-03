@@ -6,6 +6,7 @@ const App = () => {
 
   const [locationReq, setLocationReq] = useState(false);
   const [location, setLocation] = useState();
+ 
 
   const geolocate = () => {
     if (window.navigator && window.navigator.geolocation) {
