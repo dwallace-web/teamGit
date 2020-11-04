@@ -1,14 +1,20 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { render } from "react-dom";
+import { Button } from 'reactstrap';
 import Zomato from './components/Zomato/Zomato';
 import Weather from './components/OpenWeather/OpenWeather';
+import Nasa from './components/Nasa/Nasa'
+
 
 const App = () => {
   console.log('render')
 
+  const [locationReq, setLocationReq] = useState(false);
+  // const [location, setLocation] = useState();
+
   const [location, setLocation] = useState('');
-  const [GeoIsReturned , setGeoIsReturned ] = useState(false);
+  const [GeoIsReturned, setGeoIsReturned] = useState(false);
 
   useEffect(() => {
     async function geolocate() {
@@ -18,7 +24,7 @@ const App = () => {
       }
     }
 
-    async function onGeolocateSuccess (position) {
+    async function onGeolocateSuccess(position) {
       let { latitude, longitude } = position.coords;
       setLocation({ latitude, longitude })
       console.log('onGeolocateSuccess', latitude, longitude)
@@ -38,9 +44,6 @@ const App = () => {
     geolocate();
   }, [])
 
-
-
-
   return (
     <div className="App">
       <div className="Container">
@@ -50,10 +53,17 @@ const App = () => {
 
         {/* Add Nasa API */}
 
-        <h1> Zomato Data </h1>
-        { GeoIsReturned ? <Zomato location={location} /> : <h1>Slow Down</h1>  }
 
+        <h1> Zomato Data </h1>
+        {GeoIsReturned ? <Zomato location={location} /> : <h1>Location not available!</h1>}
+
+
+        <Nasa location={location} />
+        {/* <Button color="primary">Confirm reactstrap install!</Button> */}
       </div>
+
+
+
 
     </div>
   );
