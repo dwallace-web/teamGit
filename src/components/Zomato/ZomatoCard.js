@@ -13,17 +13,18 @@ const ZomatoCard = (props) => {
                     .map(
                         result => {
                             return (
-                                <Card body outline color="secondary">
-
+                                <Card body outline color="secondary" style={{width: '400px'}}>
+                                    <CardBody> 
                                     <CardTitle>{result.restaurant.name}</CardTitle>
+                                    
                                     <CardText>
-                                        <br />
+
                         Rating: {result.restaurant.user_rating.aggregate_rating} from {result.restaurant.user_rating.votes} votes.
-                                        <br />
                         People believe this restaurant is: {result.restaurant.user_rating.rating_text}.
                         <br />
                         Phone Number: {result.restaurant.phone_numbers}
                                     </CardText>
+                                    </CardBody>
                                     <a href={result.restaurant.menu_url} target="_blank"><Button color="success">View Menu!</Button></a>
                                 </Card>
                             )

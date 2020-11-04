@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ZomatoCard from './ZomatoCard'
 
+
 const Zomato = (props) => {
 
     const [searchResults, setSearchResults] = useState([]);
@@ -15,18 +16,7 @@ const Zomato = (props) => {
     let requestData = {
         method: 'GET',
         headers: myHeaders
-    };
-
-    // // const fetchZomato = () => {
-    // //     fetch(`https://developers.zomato.com/api/v2.1/search?&lat=${props.location.latitude}&lon=${props.location.longitude}`, requestData)
-    // //         .then(r => r.json())
-    // //         .then(res => setSearchResults(res.restaurants))
-    // //         .catch(error => console.log('error', error))
-    // // }
-
-    // console.log('call fetchzomato')
-    // // fetchZomato();
-    // console.log('fetch ran');      
+    };    
 
     useEffect(() => {
         console.log('useeffect called');
@@ -58,6 +48,8 @@ const Zomato = (props) => {
         <div>
             <h2>Zomato Results!</h2>
             { searchResults.length > 0 ? <ZomatoCard searchResults={searchResults} /> : null }
+
+
         </div>
     )
 }
