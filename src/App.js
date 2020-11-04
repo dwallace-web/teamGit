@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { render } from "react-dom";
 import Zomato from './components/Zomato/Zomato';
+import Weather from './components/OpenWeather/OpenWeather';
 
 const App = () => {
   console.log('render')
@@ -43,7 +44,8 @@ const App = () => {
   return (
     <div className="App">
       <div className="Container">
-        {/* <h1>Weather API Goes here:</h1> */}
+        <h1>Weather Data</h1>
+        { GeoIsReturned ? <Weather location={location} />: <h1>Placeholder</h1> }
         {/* Add Weather API */}
 
         {/* Add Nasa API */}
